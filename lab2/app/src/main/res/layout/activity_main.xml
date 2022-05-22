@@ -1,0 +1,24 @@
+<LinearLayout
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical">
+
+    <Button
+        android:id="@+id/Q1"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:text="Question1"/>
+
+    <Button
+        android:id="@+id/Q2"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:text="Question2"/>
+
+    <Button
+        android:id="@+id/Q3"
+        android:layout_width="184dp"
+        android:layout_height="wrap_content"
+        android:text="Question3"/>
+</LinearLayout>

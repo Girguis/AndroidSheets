@@ -1,0 +1,51 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:id="@+id/inTemp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="number"
+        tools:layout_editor_absoluteX="105dp"
+        tools:layout_editor_absoluteY="15dp" />
+
+
+    <RadioGroup
+        android:id="@+id/groupR"
+        android:layout_width="358dp"
+        android:layout_height="69dp">
+        <RadioButton
+            android:id="@+id/C"
+            android:layout_width="111dp"
+            android:layout_height="wrap_content"
+            android:text="Celsius"
+            tools:layout_editor_absoluteX="237dp"
+            tools:layout_editor_absoluteY="79dp" />
+        <RadioButton
+            android:id="@+id/F"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fahrenheit"
+            tools:layout_editor_absoluteX="101dp"
+            tools:layout_editor_absoluteY="79dp" />
+    </RadioGroup>
+
+
+    <Button
+        android:id="@+id/convert"
+        android:layout_width="203dp"
+        android:layout_height="50dp"
+        android:onClick="convertTemp"
+        android:text="Convert"/>
+
+    <TextView
+        android:id="@+id/outTemp"
+        android:layout_width="329dp"
+        android:layout_height="50dp"/>
+
+</LinearLayout>

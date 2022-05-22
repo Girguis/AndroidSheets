@@ -1,0 +1,60 @@
+package com.example.lab4q2;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.os.Bundle;
+import android.provider.MediaStore;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+    /*
+        اول حاجة محتاج انك تضيف ال Permission بتاع الكاميرا فى Manifest
+        <uses-permission android:name="android.permission.CAMERA"/>
+        بعدين فى ال Activity هتبقى محتاج حاجتين اول حاجة ImageView
+        وتانى حاجة محتاج Button بحيث لما تدوس عليه يفتح معاك الكاميرا
+        جوه الفانكشن بتاعت ال click هنعمل Intent جديده و Parameter بتاعها هو عباره عن MediaStore.ACTION_IMAGE_CAPTURE
+        بعدين بنعمل startActivityForResult وهنا بتاخد 2 Parameters اول حاجة ال intent
+        وتانى حاجة هنديها const value بحيث بعدين لما ال result ترجع لينا نتأكد انها نفس الحاجة اللى كنا طالبينها
+        لما تخلص الجزء ده هتحتاج حاجة علشان تعمل receive للصورة
+        ف هنا هنعمل Override للفانكشن اللى اسمها onActivityResult
+        الجزء اللى بيتكتب فيها موجود تحت
+    */
+
+
+public class MainActivity extends AppCompatActivity {
+    Button openCameraBtn;
+    ImageView imageView;
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        openCameraBtn=findViewById(R.id.openCameraBtn);
+        imageView=findViewById(R.id.imageView);
+        openCameraBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent =new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(intent,1);
+            }
+        });
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(requestCode==1 && resultCode ==RESULT_OK)
+        {
+            Bitmap imageBitmap = (Bitmap)data.getExtras().get("data");
+            imageView.setImageBitmap(imageBitmap);
+            //هنا ممكن تحولها ل Drawable وتعملsetImageDrawable او تقف لحد السطر اللى فوق الاتنين شغالين
+            //Drawable drawable = new BitmapDrawable(getResources(), imageBitmap);
+            //imageView.setImageDrawable(drawable);
+        }
+    }
+}
+
